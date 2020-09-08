@@ -12,6 +12,7 @@ function ProductsScreen(props) {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
+  const [points, setPoints] = useState('');
   const [image, setImage] = useState('');
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
@@ -51,6 +52,7 @@ function ProductsScreen(props) {
     setId(product._id);
     setName(product.name);
     setPrice(product.price);
+    setPoints(product.points);
     setDescription(product.description);
     setImage(product.image);
     setBrand(product.brand);
@@ -64,6 +66,7 @@ function ProductsScreen(props) {
         _id: id,
         name,
         price,
+        points,
         image,
         brand,
         category,
@@ -133,6 +136,17 @@ function ProductsScreen(props) {
                   value={price}
                   id="price"
                   onChange={(e) => setPrice(e.target.value)}
+                ></input>
+              </li>
+              <li>
+                <label htmlFor="points">Points</label>
+                <input
+                  type="text"
+                  name="price"
+                  value={points}
+                  id="points"
+                  //onChange={(e) => setPoints(e.target.value)}
+                  onChange={(e) => setPoints(0.10 * price)}
                 ></input>
               </li>
               <li>
@@ -212,6 +226,7 @@ function ProductsScreen(props) {
               <th>ID</th>
               <th>Name</th>
               <th>Price</th>
+              <th>Points</th>
               <th>Category</th>
               <th>Brand</th>
               <th>Action</th>
@@ -223,6 +238,7 @@ function ProductsScreen(props) {
                 <td>{product._id}</td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
+                <td>{product.points}</td>
                 <td>{product.category}</td>
                 <td>{product.brand}</td>
                 <td>

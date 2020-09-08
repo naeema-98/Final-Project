@@ -1,5 +1,6 @@
 export default {
   products: [
+    /*
     {
       _id: '1',
       name: 'Slim Shirt',
@@ -42,5 +43,29 @@ export default {
       numReviews: 8,
       countInStock: 6,
     },
+    */
+    {
+      _id: '',
+      name: 'Watch for Her',
+      category: 'Watch',
+      image: '/images/1599223371467.jpg',
+      price: 15000,
+      points: 0.1 * 15000,
+      brand: ' Rado ',
+      rating: 4.5,
+      numReviews: 0
+    },
+    {
+      _id: '',
+      name: 'Majesty',
+      category: 'Perfume',
+      image: '/images/1599216222463.jpg',
+      price: 10000,
+      points: 0.1 * 10000,
+      brand: ' Chanel',
+      rating: 4.2,
+      numReviews: 0
+    }
+  ]
   ]
 }

@@ -61,6 +61,7 @@ router.put('/:id', isAuth, isAdmin, async (req, res) => {
   if (product) {
     product.name = req.body.name;
     product.price = req.body.price;
+    product.points = req.body.points;
     product.image = req.body.image;
     product.brand = req.body.brand;
     product.category = req.body.category;
@@ -90,6 +91,7 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
   const product = new Product({
     name: req.body.name,
     price: req.body.price,
+    points: req.body.points,
     image: req.body.image,
     brand: req.body.brand,
     category: req.body.category,

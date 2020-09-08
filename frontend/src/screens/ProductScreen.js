@@ -76,6 +76,9 @@ function ProductScreen(props) {
                   Price: <b>${product.price}</b>
                 </li>
                 <li>
+                  Points: <b>${product.points}</b>
+                </li>
+                <li>
                   Description:
                   <div>{product.description}</div>
                 </li>
@@ -83,7 +86,8 @@ function ProductScreen(props) {
             </div>
             <div className="details-action">
               <ul>
-                <li>Price: {product.price}</li>
+                <li>Price: ${product.price}</li>
+                <li>Points: ${product.points}</li>
                 <li>
                   Status:{' '}
                   {product.countInStock > 0 ? 'In Stock' : 'Unavailable.'}

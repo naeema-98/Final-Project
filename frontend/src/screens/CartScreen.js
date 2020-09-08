@@ -68,6 +68,7 @@ function CartScreen(props) {
                 <div className="cart-price">
                   ${item.price}
                 </div>
+                
               </li>
             )
         }
