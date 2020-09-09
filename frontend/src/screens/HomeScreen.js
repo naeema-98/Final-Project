@@ -32,15 +32,18 @@ function HomeScreen(props) {
   return (
     <>
       {category && <h2>{category}</h2>}
-
+       
+      <hr className="line"></hr>
       <ul className="filter">
         <li>
-          <form onSubmit={submitHandler}>
+          <form  onSubmit={submitHandler}>
             <input
+              style={{width: 210}}
               name="searchKeyword"
               onChange={(e) => setSearchKeyword(e.target.value)}
             />
-            <button type="submit">Search</button>
+            
+            <button type="submit"><span><i class="fa fa-search" aria-hidden="true"></i></span></button>
           </form>
         </li>
         <li>
@@ -72,8 +75,8 @@ function HomeScreen(props) {
                   <Link to={'/product/' + product._id}>{product.name}</Link>
                 </div>
                 <div className="product-brand">{product.brand}</div>
-                <div className="product-price">${product.price}</div>
-                <div className="product-points">Points: ${product.points}</div>
+                <div className="product-price">Rs. {product.price}</div>
+                <div className="product-points">Points: {product.points}</div>
                 <div className="product-rating">
                   <Rating
                     value={product.rating}

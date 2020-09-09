@@ -14,7 +14,11 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OrdersScreen';
-
+import Contactus from './screens/Contactus';
+import Aboutus from './screens/Aboutus';
+//import styled from 'styled-components';
+import TooltipReact from "./Tooltip";
+import logo from "./logo.png";
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -28,17 +32,26 @@ function App() {
   return (
     <BrowserRouter>
       <div className="grid-container">
+        
+      
         <header className="header">
           <div className="brand">
             <button onClick={openMenu}>&#9776;</button>
-            <Link to="/">BANDBETA</Link>
+            <Link to="/" ><img src={logo} alt="store" className="Logo" /></Link>
           </div>
           <div className="header-links">
-            <a href="cart.html">Cart</a>
+          <a href="/cart" data-tip data-for="Your Cart"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span></a>
+          <TooltipReact place="bottom" id="Your Cart"><span>Your Cart</span></TooltipReact>
+
+          <a href="/cart" data-tip data-for="Your Points"><span><i class="fa fa-gem" aria-hidden="true"></i></span></a>
+          <TooltipReact place="bottom" id="Your Points"><span>Your Points</span></TooltipReact>
+          
+          <a href="/cart" data-tip data-for="Notifications"><span><i class="fa fa-bell" aria-hidden="true"></i></span></a>
+          <TooltipReact place="bottom" id="Notifications"><span>Notifications</span></TooltipReact>  
             {userInfo ? (
               <Link to="/profile">{userInfo.name}</Link>
             ) : (
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin" style={{fontSize:20}}>Sign In</Link>
             )}
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
@@ -52,26 +65,49 @@ function App() {
               </div>
             )}
           </div>
+          
         </header>
+
+        
+        {/*<hr className="line"></hr>
+         /*<NavBar />*/ }
         <aside className="sidebar">
-          <h3>Categories</h3>
+          
           <button className="sidebar-close-button" onClick={closeMenu}>
             x
           </button>
+          <h2 className="BBeta"> B & Beta</h2>
           <ul className="categories">
             <li>
-              <Link to="/category/Perfume">Perfumes</Link>
+              <Link to="/Aboutus" className="Links"><i class="far fa-address-card"></i>&nbsp;&nbsp;&nbsp;About Us</Link>
             </li>
 
             <li>
-              <Link to="/category/Watch">Watches</Link>
+              <Link to="/contactus" className="Links "><i class="fab fa-staylinked"></i>&nbsp;&nbsp;&nbsp;Contact Us</Link>
             </li>
+            </ul>
+            <h3 class="BBeta">Categories</h3>
+          
+          <ul className="categories" >
+            <li>
+              <Link to="/category/Perfume" className="Links"><i class="fas fa-chess-queen"></i>&nbsp;&nbsp;&nbsp;Perfumes</Link>
+            </li>
+            <li>
+              <Link to="/category/Watch" className="Links"><i class="fas fa-stopwatch"></i>&nbsp;&nbsp;&nbsp;Watches</Link>
+            </li>
+
+            <li>
+              <Link to="/category/Watch" className="Links"><i class="far fa-star"></i>&nbsp;&nbsp;&nbsp;Wishlist</Link>
+            </li>           
           </ul>
         </aside>
+
         <main className="main">
           <div className="content">
             <Route path="/orders" component={OrdersScreen} />
             <Route path="/profile" component={ProfileScreen} />
+            <Route path="/Contactus" component={Contactus} />
+            <Route path="/Aboutus" component={Aboutus} />
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/products" component={ProductsScreen} />
             <Route path="/shipping" component={ShippingScreen} />
