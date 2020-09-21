@@ -24,7 +24,8 @@ function orderDetailsReducer(state = {
   order: {
     orderItems: [],
     shipping: {},
-    payment: {}
+    payment: {},
+   // sumPoints: {},
   }
 }, action) {
   switch (action.type) {

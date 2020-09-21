@@ -16,12 +16,12 @@ function PaymentScreen(props) {
   };
   return (
     <div>
-      <CheckoutSteps step1 step2 step3></CheckoutSteps>
+      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <div className="form">
         <form onSubmit={submitHandler}>
-          <ul className="form-container">
+          <ul className="form-container details-action">
             <li>
-              <h2>Payment</h2>
+              <h2><strong>Payment</strong></h2>
             </li>
 
             <li>
@@ -34,6 +34,20 @@ function PaymentScreen(props) {
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 ></input>
                 <label for="paymentMethod">Cash</label>
+                
+              </div>
+            </li>
+
+            <li>
+              <div>
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  id="paymentMethod"
+                  value="paypal"
+                  onChange={(e) => setPaymentMethod(e.target.value)}
+                ></input>
+                <label for="paymentMethod">Points</label>
               </div>
             </li>
 

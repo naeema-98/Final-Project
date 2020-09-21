@@ -28,20 +28,21 @@ function OrderScreen(props) {
   return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
 
     <div>
+      <hr className="line" />
       <div className="placeorder">
         <div className="placeorder-info">
-          <div>
+           <div>
             <h3>
               Shipping
-          </h3>
+            </h3>
             <div>
               {order.shipping.address}, {order.shipping.city},
-          {order.shipping.postalCode}, {order.shipping.country},
-          </div>
+            {order.shipping.postalCode}, {order.shipping.country},
+            </div>
             <div>
               {order.isDelivered ? "Delivered at " + order.deliveredAt : "Not Delivered."}
             </div>
-          </div>
+          </div> 
           <div>
             <h3>Payment</h3>
             <div>
@@ -51,6 +52,7 @@ function OrderScreen(props) {
               {order.isPaid ? "Paid at " + order.paidAt : "Not Paid."}
             </div>
           </div>
+
           <div>
             <ul className="cart-list-container">
               <li>
@@ -59,7 +61,10 @@ function OrderScreen(props) {
           </h3>
                 <div>
                   Price
-          </div>
+               </div>
+               <div>
+                  Points
+               </div>
               </li>
               {
                 order.orderItems.length === 0 ?
@@ -84,44 +89,57 @@ function OrderScreen(props) {
                         </div>
                       </div>
                       <div className="cart-price">
-                        ${item.price}
+                        Rs.{item.price}
+                      </div>
+                      <div className="cart-points">
+                        Rs.{item.points}
                       </div>
                     </li>
                   )
               }
             </ul>
           </div>
-
+ 
 
         </div>
+    
         <div className="placeorder-action">
           <ul>
-            <li className="placeorder-actions-payment">
+            
+            {/* <li className="placeorder-actions-payment">
               {loadingPay && <div>Finishing Payment...</div>}
               {!order.isPaid &&
                 <PaypalButton
                   amount={order.totalPrice}
                   onSuccess={handleSuccessPayment} />
               }
-            </li>
+            </li> */}
             <li>
               <h3>Order Summary</h3>
             </li>
             <li>
               <div>Items</div>
-              <div>${order.itemsPrice}</div>
+              <div>Rs.{order.itemsPrice}</div>
+            </li>
+            <li>
+              <div>Points</div>
+              <div>Rs.{order.itemsPoints}</div>
             </li>
             <li>
               <div>Shipping</div>
-              <div>${order.shippingPrice}</div>
+              <div>Rs.{order.shippingPrice}</div>
             </li>
             <li>
               <div>Tax</div>
-              <div>${order.taxPrice}</div>
+              <div>Rs.{order.taxPrice}</div>
             </li>
             <li>
               <div>Order Total</div>
               <div>${order.totalPrice}</div>
+            </li>
+            <li>
+              <div>Total Points</div>
+              <div>Rs.{order.totalPoints}</div>
             </li>
           </ul>
 

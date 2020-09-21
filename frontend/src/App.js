@@ -110,7 +110,7 @@ function App() {
             <Route path="/Aboutus" component={Aboutus} />
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/products" component={ProductsScreen} />
-            <Route path="/shipping" component={ShippingScreen} />
+            <Route path="/shipping" component={ShippingScreen} /> 
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/signin" component={SigninScreen} />

@@ -25,11 +25,14 @@ function SigninScreen(props) {
     dispatch(signin(email, password));
 
   }
-  return <div className="form">
+  return( 
+  <div>
+   <hr className="line"></hr>
+  <div className="form">
     <form onSubmit={submitHandler} >
-      <ul className="form-container">
+      <ul className="form-container details-action">
         <li>
-          <h2>Sign-In</h2>
+          <h2><strong>Sign-In</strong></h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
@@ -39,12 +42,12 @@ function SigninScreen(props) {
           <label htmlFor="email">
             Email
           </label>
-          <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+          <input type="email" name="email" id="email" placeholder="Enter Your Email" onChange={(e) => setEmail(e.target.value)}>
           </input>
         </li>
         <li>
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+          <input type="password" id="password" name="password" placeholder="Enter Your Password" onChange={(e) => setPassword(e.target.value)}>
           </input>
         </li>
         <li>
@@ -54,10 +57,12 @@ function SigninScreen(props) {
           New to bandbeta?
         </li>
         <li>
-          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
+          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your B&BETA account</Link>
         </li>
       </ul>
     </form>
   </div>
+  </div>
+  )
 }
 export default SigninScreen;

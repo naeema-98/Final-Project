@@ -27,11 +27,13 @@ function RegisterScreen(props) {
     e.preventDefault();
     dispatch(register(name, email, password));
   }
-  return <div className="form">
+  return (<div>
+   <hr className="line" />
+    <div className="form">
     <form onSubmit={submitHandler} >
-      <ul className="form-container">
+      <ul className="form-container details-action">
         <li>
-          <h2>Create Account</h2>
+          <h2><strong>Create Account</strong></h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
@@ -41,24 +43,24 @@ function RegisterScreen(props) {
           <label htmlFor="name">
             Name
           </label>
-          <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
+          <input type="name" name="name" id="name" placeholder="Enter Your Name" onChange={(e) => setName(e.target.value)}>
           </input>
         </li>
         <li>
           <label htmlFor="email">
             Email
           </label>
-          <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+          <input type="email" name="email" id="email" placeholder="Enter Your Email" onChange={(e) => setEmail(e.target.value)}>
           </input>
         </li>
         <li>
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+          <input type="password" id="password" name="password" placeholder="Enter Your Password" onChange={(e) => setPassword(e.target.value)}>
           </input>
         </li>
         <li>
           <label htmlFor="rePassword">Re-Enter Password</label>
-          <input type="password" id="rePassword" name="rePassword" onChange={(e) => setRePassword(e.target.value)}>
+          <input type="password" id="rePassword" name="rePassword" placeholder="Re-enter Your Password" onChange={(e) => setRePassword(e.target.value)}>
           </input>
         </li>
         <li>
@@ -66,12 +68,13 @@ function RegisterScreen(props) {
         </li>
         <li>
           Already have an account?
-          <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
+          <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Login to your B&BETA account</Link>
 
         </li>
 
       </ul>
     </form>
   </div>
+  </div>)
 }
 export default RegisterScreen;

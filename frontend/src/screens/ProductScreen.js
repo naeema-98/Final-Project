@@ -46,6 +46,7 @@ function ProductScreen(props) {
 
   return (
     <div>
+      <hr className="line"/>
       <div className="back-to-result">
         <Link to="/">Back to result</Link>
       </div>
@@ -59,7 +60,7 @@ function ProductScreen(props) {
             <div className="details-image">
               <img src={product.image} alt="product"></img>
             </div>
-            <div className="details-info">
+            <div className="details-info details-info ul details-info li">
               <ul>
                 <li>
                   <h4>{product.name}</h4>
@@ -117,30 +118,18 @@ function ProductScreen(props) {
                     </button>
                   )}
                 </li>
+
+                
               </ul>
-            </div>
-          </div>
-          <div className="content-margined">
-            <h2>Reviews</h2>
-            {!product.reviews.length && <div>There is no review</div>}
-            <ul className="review" id="reviews">
-              {product.reviews.map((review) => (
-                <li key={review._id}>
-                  <div>{review.name}</div>
-                  <div>
-                    <Rating value={review.rating}></Rating>
-                  </div>
-                  <div>{review.createdAt.substring(0, 10)}</div>
-                  <div>{review.comment}</div>
-                </li>
-              ))}
-              <li>
+              <hr className="line"/>
+              <div className="customer-review">
+          
                 <h3>Write a customer review</h3>
                 {userInfo ? (
                   <form onSubmit={submitHandler}>
-                    <ul className="form-container">
+                    <ul className="form-reviw">
                       <li>
-                        <label htmlFor="rating">Rating</label>
+                        <label htmlFor="rating">Rating: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <select
                           name="rating"
                           id="rating"
@@ -155,7 +144,7 @@ function ProductScreen(props) {
                         </select>
                       </li>
                       <li>
-                        <label htmlFor="comment">Comment</label>
+                        <label htmlFor="comment" >Comment: &nbsp;&nbsp;</label>
                         <textarea
                           name="comment"
                           value={comment}
@@ -174,9 +163,34 @@ function ProductScreen(props) {
                     Please <Link to="/signin">Sign-in</Link> to write a review.
                   </div>
                 )}
-              </li>
+              
+
+            </div>
+            </div>
+            
+            </div> 
+
+            
+
+            <div className="content-margined" >
+            <h1 style={{fontWeight: 'bold', textAlign: 'center' , color : "#00486c"}} >REVIEWS</h1>
+            <hr className="line"/>
+            {!product.reviews.length && <div>There is no review</div>}
+            <ul className="review" id="reviews">
+              {product.reviews.map((review) => (
+                <li key={review._id}>
+                  <div>{review.name}</div>
+                  <div>
+                    <Rating value={review.rating}></Rating>
+                  </div>
+                  <div>{review.createdAt.substring(0, 10)}</div>
+                  <div>{review.comment}</div>
+                </li>
+              ))}
+              
             </ul>
-          </div>
+          </div> 
+                 
         </>
       )}
     </div>

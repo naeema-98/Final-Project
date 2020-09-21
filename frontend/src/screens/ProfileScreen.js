@@ -8,6 +8,7 @@ function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  //const [totalPoints, setPoints] = useState('');
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -31,6 +32,7 @@ function ProfileScreen(props) {
       setEmail(userInfo.email);
       setName(userInfo.name);
       setPassword(userInfo.password);
+      //setPoints(totalPoints.totalPoints)
     }
     dispatch(listMyOrders());
     return () => {
@@ -38,13 +40,16 @@ function ProfileScreen(props) {
     };
   }, [userInfo])
 
-  return <div className="profile">
+  return (
+    <div>
+      <hr className="line" />
+       <div className="profile">
     <div className="profile-info">
       <div className="form">
         <form onSubmit={submitHandler} >
-          <ul className="form-container">
+          <ul className="form-container details-action">
             <li>
-              <h2>User Profile</h2>
+              <h2><strong>User Profile</strong></h2>
             </li>
             <li>
               {loading && <div>Loading...</div>}
@@ -65,6 +70,22 @@ function ProfileScreen(props) {
               <input value={email} type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
               </input>
             </li>
+            
+            <li>
+              <label htmlFor="email">
+                Points
+          </label>
+              <input value={email} type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+              </input>
+            </li>
+            {/* <li>
+              <label htmlFor="totalPoints">
+               Points
+          </label>
+              <input value={points} name="totalPoints" id="totalPoints" onChange={(e) => setEmail(e.target.value)}>
+              </input>
+            </li> */}
+
             <li>
               <label htmlFor="password">Password</label>
               <input value={password} type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
@@ -93,6 +114,7 @@ function ProfileScreen(props) {
                   <th>DATE</th>
                   <th>TOTAL</th>
                   <th>PAID</th>
+                  <th>POINTS</th>
                   <th>ACTIONS</th>
                 </tr>
               </thead>
@@ -102,6 +124,7 @@ function ProfileScreen(props) {
                   <td>{order.createdAt}</td>
                   <td>{order.totalPrice}</td>
                   <td>{order.isPaid}</td>
+                  <td>{order.totalPoints}</td>
                   <td>
                     <Link to={"/order/" + order._id}>DETAILS</Link>
                   </td>
@@ -111,6 +134,7 @@ function ProfileScreen(props) {
       }
     </div>
   </div>
+  </div>)
 }
 
 export default ProfileScreen;

@@ -14,21 +14,31 @@ function PlaceOrderScreen(props) {
     props.history.push("/shipping");
   } else if (!payment.paymentMethod) {
     props.history.push("/payment");
-  }
+  } 
+
+  
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+  const itemsPoints = cartItems.reduce((a, c) => a + c.points * c.qty, 0);
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
   const taxPrice = 0.15 * itemsPrice;
-  //const points= 0.10 * itemsPrice;
+  //const userPoints= 0;
+  
+  
   const totalPrice = itemsPrice + shippingPrice + taxPrice;
+  const totalPoints= itemsPoints;
+
+  //const sumPoints= totalPoints+sumPoints;
  
   const dispatch = useDispatch();
 
   const placeOrderHandler = () => {
     // create an order
-    dispatch(createOrder({
-      orderItems: cartItems, shipping, payment, itemsPrice, shippingPrice,
-      taxPrice, totalPrice
-    }));
+     dispatch(createOrder({
+      orderItems: cartItems, shipping, payment, itemsPrice,itemsPoints, shippingPrice,
+      taxPrice, totalPrice, totalPoints
+    })); 
+
+    
   }
   useEffect(() => {
     if (success) {
@@ -38,7 +48,8 @@ function PlaceOrderScreen(props) {
   }, [success]);
 
   return <div>
-    <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
+    <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps> 
+    
     <div className="placeorder">
       <div className="placeorder-info">
         <div>
@@ -49,7 +60,7 @@ function PlaceOrderScreen(props) {
             {cart.shipping.address}, {cart.shipping.city},
           {cart.shipping.postalCode}, {cart.shipping.country},
           </div>
-        </div>
+        </div> 
         <div>
           <h3>Payment</h3>
           <div>
@@ -62,9 +73,12 @@ function PlaceOrderScreen(props) {
               <h3>
                 Shopping Cart
           </h3>
-              <div>
+              <div >
                 Price
-          </div>
+              </div>
+              <div>
+                Points
+              </div>
             </li>
             {
               cartItems.length === 0 ?
@@ -89,7 +103,10 @@ function PlaceOrderScreen(props) {
                       </div>
                     </div>
                     <div className="cart-price">
-                      ${item.price}
+                      Rs.{item.price}
+                    </div>
+                    <div className="cart-points">
+                      Rs.{item.points}
                     </div>
                   </li>
                 )
@@ -109,29 +126,35 @@ function PlaceOrderScreen(props) {
           </li>
           <li>
             <div>Items</div>
-            <div>${itemsPrice}</div>
+            <div>Rs.{itemsPrice}</div>
+          </li>
+          <li>
+            <div>Points</div>
+            <div>Rs.{itemsPoints}</div>
           </li>
           <li>
             <div>Shipping</div>
-            <div>${shippingPrice}</div>
-          </li>
+            <div>Rs.{shippingPrice}</div>
+          </li> 
           <li>
             <div>Tax</div>
-            <div>${taxPrice}</div>
+            <div>Rs.{taxPrice}</div>
           </li>
           
-          {/* <li>
-            <div>Points</div>
-            <div>${points}</div>
-          </li> */}
-          
+                   
           <li>
             <div>Order Total</div>
-            <div>${totalPrice}</div>
+            <div>Rs.{totalPrice}</div>
           </li>
+          <li>
+            <div>Total Points</div>
+            <div>Rs.{totalPoints}</div>
+          </li>
+          {/* <li>
+            <div>User Points</div>
+            <div>Rs.{sumPoints}</div>
+          </li> */}
         </ul>
-
-
 
       </div>
 

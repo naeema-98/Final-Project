@@ -39,9 +39,12 @@ router.post("/", isAuth, async (req, res) => {
     shipping: req.body.shipping,
     payment: req.body.payment,
     itemsPrice: req.body.itemsPrice,
+    itemsPoints: req.body.itemsPoints,
     taxPrice: req.body.taxPrice,
     shippingPrice: req.body.shippingPrice,
     totalPrice: req.body.totalPrice,
+    totalPoints: req.body.totalPoints,
+    sumPoints: req.body.sumPoints,
   });
   const newOrderCreated = await newOrder.save();
   res.status(201).send({ message: "New Order Created", data: newOrderCreated });
@@ -53,7 +56,7 @@ router.put("/:id/pay", isAuth, async (req, res) => {
     order.isPaid = true;
     order.paidAt = Date.now();
     order.payment = {
-      paymentMethod: 'paypal',
+      paymentMethod: 'cash',
       paymentResult: {
         payerID: req.body.payerID,
         orderID: req.body.orderID,

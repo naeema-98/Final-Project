@@ -263,9 +263,12 @@ a > .rating > span:last-child {
 .details-info {
   flex: 1 1 30rem;
   font-size: small;
+ 
 }
 .details-action {
-  flex: 1 1 30rem;
+  flex: 2 2 20rem;
+  font-size: medium;
+  
 }
 
 .button-wishlist{
@@ -280,6 +283,7 @@ a > .rating > span:last-child {
 .details-action ul {
   list-style-type: none;
   padding: 0;
+  
 }
 .details-info li,
 .details-action li {
@@ -294,8 +298,9 @@ a > .rating > span:last-child {
 .details-action {
   border: 0.1rem #808080 solid;
   border-radius: 0.5rem;
-  background-color: #f8f8f8;
+  margin-right: 10rem;
   padding: 1rem;
+  background-color: 	#e0f3f9;
 }
 .details-action ul li:last-child {
   display: flex;
@@ -329,12 +334,17 @@ a > .rating > span:last-child {
 .cart-list {
   flex: 3 1 60rem;
 }
+
 .cart-action {
-  flex: 1 1 20rem;
-  background-color: #f0f0f0;
+  flex: 2 2 30rem;
+  margin-top: 3rem;
+  background-color: #e0f3f9;
+  border: 0.1rem #808080 solid;
   border-radius: 0.5rem;
+  height: 15rem;
   padding: 1rem;
 }
+
 .cart-list-container {
   padding: 0;
   list-style-type: none;

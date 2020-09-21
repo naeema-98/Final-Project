@@ -15,22 +15,31 @@ const orderItemSchema = new mongoose.Schema({
   qty: { type: Number, required: true },
   image: { type: String, required: true },
   price: { type: String, required: true },
+  points: { type: String, defalut:0, required: true },
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product',
     required: true
   },
 });
+/* 
+const pointSchema = new mongoose.Schema({
+  sumPoints: { type: Number, default: 0 },
 
+});
+ */
 const orderSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   orderItems: [orderItemSchema],
   shipping: shippingSchema,
   payment: paymentSchema,
+  //sumPoints: pointSchema,
   itemsPrice: { type: Number },
+  itemsPoints: { type: Number },
   taxPrice: { type: Number },
   shippingPrice: { type: Number },
   totalPrice: { type: Number },
+  totalPoints: { type: Number },
   isPaid: { type: Boolean, default: false },
   paidAt: { type: Date },
   isDelivered: { type: Boolean, default: false },
