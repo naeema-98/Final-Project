@@ -78,20 +78,12 @@ function PlaceOrderScreen(props) {
   }, [success]);
 
   return <div>
-    {/* <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>  */}
+    
     <CheckoutSteps step1 step3 step4 ></CheckoutSteps>
     
     <div className="placeorder">
       <div className="placeorder-info">
-        {/* <div>
-          <h3>
-            Shipping
-          </h3>
-          <div>
-            {cart.shipping.address}, {cart.shipping.city},
-          {cart.shipping.postalCode}, {cart.shipping.country},
-          </div>
-        </div>  */}
+        
         <div>
           <h3>Payment</h3>
           <div>
@@ -160,58 +152,25 @@ function PlaceOrderScreen(props) {
             <div>Items</div>
             <div>Rs.{itemsPrice}</div>
           </li>
-          <li>
-            <div>Points</div>
-            <div>Rs.{itemsPoints}</div>
-          </li>
-          {/* <li>
-            <div>Shipping</div>
-            <div>Rs.{shippingPrice}</div>
-          </li>  */}
-          <li>
+          
+           <li>
             <div>Tax</div>
             <div>Rs.{taxPrice}</div>
           </li>
           
                    
-          <li>
-            <div>Order Total</div>
+          <li style={{color: "black", fontSize:20, fontWeight:"bold"}}>
+            <div >Order Total</div>
             <div>Rs.{totalPrice}</div>
           </li>
           <li>
             <div>Total Points</div>
             <div>Rs.{itemsPoints}</div>
           </li>
-          {/* <li>
-            <div>Customer Points</div>
-            <div>Rs.{loyaltyPoints}</div>
-            </li>
-            <label htmlFor="points">Points</label>
-                <input
-                  type="text"
-                  name="loyaltyPoints"
-                  value={loyaltyPoints}
-                  //id="points"
-                  //onChange={(e) => setPoints(e.target.value)}
-                  onChange={(e) => setcustomerPoints(customerPoints + totalPoints)}
-                ></input> 
-          </li>  */} 
-          
+                 
               
-          
-              
-              <li>
-            <div>Customer Points</div>
-            <div>{loyaltyPoints}</div>
-            </li> 
-              
-          
             
-          {/* <li>
-            <div>Customer Points</div>
-            <div>{customerPoints+itemsPoints}</div>
-          </li>  */}
-        </ul>
+          </ul>
 
       </div>
 

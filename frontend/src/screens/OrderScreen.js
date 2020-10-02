@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createOrder, detailsOrder, payOrder } from '../actions/orderActions';
-import PaypalButton from '../components/PaypalButton';
+//import PaypalButton from '../components/PaypalButton';
 function OrderScreen(props) {
 
   const orderPay = useSelector(state => state.orderPay);
@@ -129,15 +129,12 @@ function OrderScreen(props) {
               <div>Tax</div>
               <div>Rs.{order.taxPrice}</div>
             </li>
-            <li>
+            
+            <li style={{color: "black", fontSize:20, fontWeight:"bold"}}>
               <div>Order Total</div>
               <div>${order.totalPrice}</div>
             </li>
-            <li>
-              <div>Total Points</div>
-              <div>Rs.{order.itemsPoints}</div>
-            </li>
-            <li>
+             <li>
               <div>Customer Points</div>
               <div>Rs.{order.itemsPoints}</div>
             </li> 
