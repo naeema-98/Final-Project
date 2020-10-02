@@ -8,7 +8,7 @@ import SigninScreen from './screens/SigninScreen';
 import { useSelector } from 'react-redux';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
-import ShippingScreen from './screens/ShippingScreen';
+//import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
@@ -19,6 +19,8 @@ import Aboutus from './screens/Aboutus';
 //import styled from 'styled-components';
 import TooltipReact from "./Tooltip";
 import logo from "./logo.png";
+
+
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -35,8 +37,8 @@ function App() {
         
       
         <header className="header">
-          <div className="brand">
-            <button onClick={openMenu}>&#9776;</button>
+          <div className="">
+            <button className="brand-button" onClick={openMenu}>&#9776;</button>
             <Link to="/" ><img src={logo} alt="store" className="Logo" /></Link>
           </div>
           <div className="header-links">
@@ -47,21 +49,25 @@ function App() {
           <TooltipReact place="bottom" id="Your Points"><span>Your Points</span></TooltipReact>
           
           <a href="/cart" data-tip data-for="Notifications"><span><i class="fa fa-bell" aria-hidden="true"></i></span></a>
-          <TooltipReact place="bottom" id="Notifications"><span>Notifications</span></TooltipReact>  
+          <TooltipReact place="bottom" id="Notifications"><span>Your Notifications</span></TooltipReact>  
             {userInfo ? (
               <Link to="/profile">{userInfo.name}</Link>
             ) : (
-              <Link to="/signin" style={{fontSize:20}}>Sign In</Link>
+              <Link to="/signin" style={{fontSize:25, fontWeight: "bold"}}>Sign In</Link>
             )}
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <a href="#">Admin</a>
-                <ul className="dropdown-content">
+                <div className="dropdown-content">
                   <li>
                     <Link to="/orders">Orders</Link>
+                    </li>
+                    <li>
                     <Link to="/products">Products</Link>
-                  </li>
-                </ul>
+                    </li>
+                    
+                  
+                </div>
               </div>
             )}
           </div>
@@ -110,7 +116,7 @@ function App() {
             <Route path="/Aboutus" component={Aboutus} />
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/products" component={ProductsScreen} />
-            <Route path="/shipping" component={ShippingScreen} /> 
+            {/* <Route path="/shipping" component={ShippingScreen} />  */}
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/signin" component={SigninScreen} />

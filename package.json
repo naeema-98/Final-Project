@@ -1,7 +1,7 @@
 {
   "name": "Final-Project",
   "version": "1.0.0",
-  "description": "Demo : https://amazonaapp.herokuapp.com/",
+  "description": "Loyalty Points System",
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.702.0",
@@ -14,7 +14,8 @@
     "mongoose": "^5.8.11",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
-    "reactstrap": "^8.5.1"
+    "reactstrap": "^8.5.1",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -32,19 +33,5 @@
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
     "build": "rm -rf dist && babel backend -d dist",
     "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/basir/amazona.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/basir/amazona/issues"
-  },
-  "homepage": "https://github.com/basir/amazona#readme",
-  "engines": {
-    "node": "12.4.0",
-    "npm": "6.9.0"
   }
 }

@@ -31,28 +31,27 @@ function OrderScreen(props) {
       <hr className="line" />
       <div className="placeorder">
         <div className="placeorder-info">
-           <div>
-            <h3>
-              Shipping
-            </h3>
-            <div>
-              {order.shipping.address}, {order.shipping.city},
-            {order.shipping.postalCode}, {order.shipping.country},
-            </div>
-            <div>
-              {order.isDelivered ? "Delivered at " + order.deliveredAt : "Not Delivered."}
-            </div>
-          </div> 
+          
           <div>
             <h3>Payment</h3>
             <div>
               Payment Method: {order.payment.paymentMethod}
             </div>
             <div>
-              {order.isPaid ? "Paid at " + order.paidAt : "Not Paid."}
+              {order.isPaid ? "Paid at " + order.paidAt : "Paid."}
             </div>
           </div>
 
+          {/* <div>
+            <h3>Points</h3>
+            <div>
+              points: {order.point.loyaltyPoints}
+            </div>
+            <div>
+              
+            </div>
+          </div>
+ */}
           <div>
             <ul className="cart-list-container">
               <li>
@@ -125,10 +124,7 @@ function OrderScreen(props) {
               <div>Points</div>
               <div>Rs.{order.itemsPoints}</div>
             </li>
-            <li>
-              <div>Shipping</div>
-              <div>Rs.{order.shippingPrice}</div>
-            </li>
+          
             <li>
               <div>Tax</div>
               <div>Rs.{order.taxPrice}</div>
@@ -139,8 +135,12 @@ function OrderScreen(props) {
             </li>
             <li>
               <div>Total Points</div>
-              <div>Rs.{order.totalPoints}</div>
+              <div>Rs.{order.itemsPoints}</div>
             </li>
+            <li>
+              <div>Customer Points</div>
+              <div>Rs.{order.itemsPoints}</div>
+            </li> 
           </ul>
 
 

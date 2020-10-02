@@ -6,12 +6,12 @@ import {
   USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGOUT, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAIL
 } from "../constants/userConstants";
 
-const update = ({ userId, name, email, password }) => async (dispatch, getState) => {
+const update = ({ userId, name, email, password, customerPoints }) => async (dispatch, getState) => {
   const { userSignin: { userInfo } } = getState();
-  dispatch({ type: USER_UPDATE_REQUEST, payload: { userId, name, email, password } });
+  dispatch({ type: USER_UPDATE_REQUEST, payload: { userId, name, email, password , customerPoints} });
   try {
     const { data } = await Axios.put("/api/users/" + userId,
-      { name, email, password }, {
+      { name, email, password, customerPoints }, {
       headers: {
         Authorization: 'Bearer ' + userInfo.token
       }

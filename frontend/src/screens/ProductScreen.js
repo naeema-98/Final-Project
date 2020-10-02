@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct, saveProductReview } from '../actions/productActions';
 import Rating from '../components/Rating';
 import { PRODUCT_REVIEW_SAVE_RESET } from '../constants/productConstants';
+import swal from 'sweetalert';
 
 function ProductScreen(props) {
   const [qty, setQty] = useState(1);
@@ -16,10 +17,12 @@ function ProductScreen(props) {
   const productReviewSave = useSelector((state) => state.productReviewSave);
   const { success: productSaveSuccess } = productReviewSave;
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     if (productSaveSuccess) {
-      alert('Review submitted successfully.');
+     // alert('Review submitted successfully.');
+      swal("Thankyou", "'Review submitted successfully!", "success");
       setRating(0);
       setComment('');
       dispatch({ type: PRODUCT_REVIEW_SAVE_RESET });

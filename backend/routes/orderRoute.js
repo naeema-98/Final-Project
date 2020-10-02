@@ -36,15 +36,16 @@ router.post("/", isAuth, async (req, res) => {
   const newOrder = new Order({
     orderItems: req.body.orderItems,
     user: req.user._id,
+    customer: req.customerPoints,
     shipping: req.body.shipping,
     payment: req.body.payment,
     itemsPrice: req.body.itemsPrice,
     itemsPoints: req.body.itemsPoints,
     taxPrice: req.body.taxPrice,
-    shippingPrice: req.body.shippingPrice,
+    //shippingPrice: req.body.shippingPrice,
     totalPrice: req.body.totalPrice,
     totalPoints: req.body.totalPoints,
-    sumPoints: req.body.sumPoints,
+    loyaltyPoints: req.body.point,
   });
   const newOrderCreated = await newOrder.save();
   res.status(201).send({ message: "New Order Created", data: newOrderCreated });

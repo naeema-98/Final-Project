@@ -31,9 +31,10 @@ function HomeScreen(props) {
 
   return (
     <>
+    <br></br>
       {category && <h2>{category}</h2>}
        
-      <hr className="line"></hr>
+      
       <ul className="filter">
         <li>
           <form  onSubmit={submitHandler}>

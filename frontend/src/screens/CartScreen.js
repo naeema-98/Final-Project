@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
+
 function CartScreen(props) {
 
   const cart = useSelector(state => state.cart);
@@ -17,12 +19,14 @@ function CartScreen(props) {
   }
   useEffect(() => {
     if (productId) {
+      swal("Perfecto", "Added to cart successfully!", "success");
       dispatch(addToCart(productId, qty, points));
     }
   }, []);
 
   const checkoutHandler = () => {
-    props.history.push("/signin?redirect=shipping");
+    // props.history.push("/signin?redirect=shipping");
+    props.history.push("/signin?redirect=payment");
   }
 
   return (
@@ -89,6 +93,10 @@ function CartScreen(props) {
                 <div className="cart-points">
                  Rs.{item.points}
                 </div>
+
+                {/* <div className="cart-points">
+                 Rs.{item.loyaltyPoints}
+                </div> */}
                 
               </li>
             )

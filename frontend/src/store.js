@@ -27,7 +27,7 @@ const cartItems = Cookie.getJSON('cartItems') || [];
 const userInfo = Cookie.getJSON('userInfo') || null;
 
 const initialState = {
-  cart: { cartItems, shipping: {}, payment: {} },
+  cart: { cartItems,  payment: {} },
   userSignin: { userInfo },
 };
 const reducer = combineReducers({

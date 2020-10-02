@@ -71,6 +71,7 @@ body {
   font: 1.6rem Helvetica;
   height: 100vh;
   margin: 0;
+  
 }
 
 .full-width {
@@ -91,10 +92,11 @@ body {
 }
 .header {
   grid-area: header !important;
-  background-color: #f3f3f3 !important;
+  background-color: #028686!important;
   color: #2a2a72 !important;
   display: flex !important;
-  font-size: 1.5rem !important;
+  font-size: 2rem !important;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   justify-content: space-between !important;
   padding: 0.5rem !important;
 }
@@ -118,13 +120,14 @@ body {
   text-decoration: none;
 }
 .header-links {
-  color: #2a2a72!important;
+  color: lavender  !important;
   font-weight: bold;
+  margin-right: 5rem;
   text-decoration: none !important;
   padding: 1rem !important;
 }
 .header-links:hover {
-  color: #ff8000 !important;
+  color: #ffd9b3 !important;
 }
 
 .headerl-links {
@@ -135,7 +138,7 @@ body {
 }
 
 .headerl-links:hover {
-  color: #ff8000 !important;
+  color: #ff8000 ;
 }
 
 .main {
@@ -203,7 +206,7 @@ a:hover {
 }
 .product-brand {
   font-size: 1.2rem;
-  color: #808080;
+  color: #ffffbd;
 }
 .product-price {
   font-size: 2rem;
@@ -388,20 +391,36 @@ a > .rating > span:last-child {
   align-items: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  margin-right: 50%;
-  margin-left: 50%;
+  
+  margin-left: 10%;
   height: auto;
 }
 .form-container {
   display: flex;
   flex-direction: column;
-  width: 34rem;
+  width: 40rem;
   
+  padding: 2rem;
+  
+  list-style-type: none;
+  margin-right: 18rem;
+}
+.form-c{
+  border-style: dashed;
+  border-width: 0.1rem;
+}
+
+/* .formStyle{
+  display: flex;
+  height: 100%;
+  display: flex;
+  width: 32rem;
   padding: 2rem;
   border: 0.1rem #c0c0c0 solid;
   border-radius: 0.5rem;
   list-style-type: none;
-}
+
+} */
 .form-container li {
   display: flex;
   flex-direction: column;
@@ -521,18 +540,28 @@ tbody > tr:nth-child(odd) {
 /* admin */
 .dropdown {
   display: inline-block;
-  position: relative;
+ 
 }
 .dropdown-content {
-  position: absolute;
-  display: none;
+  /* position: absolute;
+  display: list-item;
   right: 0;
   padding: 1rem;
   list-style-type: none;
   z-index: 1;
-  background-color: white;
+  background-color: none;
   margin: 0;
-  margin-top: 0.4rem;
+  margin-top: 0.4rem; */
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  list-style-type: none;
+  margin-left: auto;
+  margin-right: 10rem;
+  
 }
 .dropdown:hover .dropdown-content {
   display: block;
@@ -567,5 +596,34 @@ tbody > tr:nth-child(odd) {
 }
 
 .categories a:hover {
-  background-color: #c0c0c0;
+  background-color: none;
+}
+
+/*about us pae*/
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+
+.social-link {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+  background: #ddd;
+  text-decoration: none;
+  color: #555;
 }

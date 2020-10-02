@@ -15,6 +15,7 @@ function PaymentScreen(props) {
     props.history.push('placeorder');
   };
   return (
+    
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <div className="form">
@@ -33,7 +34,7 @@ function PaymentScreen(props) {
                   value="paypal"
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 ></input>
-                <label for="paymentMethod">Cash</label>
+                <label for="paymentMethod">&nbsp; &nbsp;Cash</label>
                 
               </div>
             </li>
@@ -47,7 +48,7 @@ function PaymentScreen(props) {
                   value="paypal"
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 ></input>
-                <label for="paymentMethod">Points</label>
+                <label for="paymentMethod">&nbsp; &nbsp;Points</label>
               </div>
             </li>
 

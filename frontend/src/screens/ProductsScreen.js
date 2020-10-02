@@ -100,68 +100,84 @@ function ProductsScreen(props) {
   };
   return (
     <div className="content content-margined">
-      <div className="product-header">
-        <h3>Products</h3>
+      <div className="">
+        
         <button className="button primary" onClick={() => openModal({})}>
           Create Product
         </button>
       </div>
       {modalVisible && (
-        <div className="form">
-          <form onSubmit={submitHandler}>
-            <ul className="form-container">
-              <li>
-                <h2>Create Product</h2>
-              </li>
-              <li>
-                {loadingSave && <div>Loading...</div>}
-                {errorSave && <div>{errorSave}</div>}
-              </li>
+        // <div className="form" style = {{
+        //   marginLeft : "400px"
+        // }}>
+          
 
+        <div className="container ">
+        <h1 className="create-product">Create Product</h1>
+          <form onSubmit={submitHandler}>
+            <div className="row form-c">
+              
+                <div className="col-sm">
+                  
+                  <ul className="form-container">
+                      
+                      <li>
+                        {loadingSave && <div>Loading...</div>}
+                        {errorSave && <div>{errorSave}</div>}
+                      </li>
+
+                      <li>
+                        <label htmlFor="name">Name</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={name}
+                          id="name"
+                          onChange={(e) => setName(e.target.value)}
+                        ></input>
+                      </li>
+                      <li>
+                        <label htmlFor="price">Price</label>
+                        <input
+                          type="text"
+                          name="price"
+                          value={price}
+                          id="price"
+                          onChange={(e) => setPrice(e.target.value)}
+                        ></input>
+                      </li>
+                      <li>
+                        <label htmlFor="points">Points</label>
+                        <input
+                          type="text"
+                          name="price"
+                          value={points}
+                          id="points"
+                          //onChange={(e) => setPoints(e.target.value)}
+                          onChange={(e) => setPoints(0.10 * price)}
+                        ></input>
+                      </li>
+                      <li>
+                    <label htmlFor="image">Image</label>
+                    <input
+                      type="text"
+                      name="image"
+                      value={image}
+                      id="image"
+                      onChange={(e) => setImage(e.target.value)}
+                    ></input>
+                    <input type="file" onChange={uploadFileHandler}></input>
+                    {uploading && <div>Uploading...</div>}
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="col-sm">
+                  
+                  <ul className="form-container">
+                
               <li>
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={name}
-                  id="name"
-                  onChange={(e) => setName(e.target.value)}
-                ></input>
-              </li>
-              <li>
-                <label htmlFor="price">Price</label>
-                <input
-                  type="text"
-                  name="price"
-                  value={price}
-                  id="price"
-                  onChange={(e) => setPrice(e.target.value)}
-                ></input>
-              </li>
-              <li>
-                <label htmlFor="points">Points</label>
-                <input
-                  type="text"
-                  name="price"
-                  value={points}
-                  id="points"
-                  //onChange={(e) => setPoints(e.target.value)}
-                  onChange={(e) => setPoints(0.10 * price)}
-                ></input>
-              </li>
-              <li>
-                <label htmlFor="image">Image</label>
-                <input
-                  type="text"
-                  name="image"
-                  value={image}
-                  id="image"
-                  onChange={(e) => setImage(e.target.value)}
-                ></input>
-                <input type="file" onChange={uploadFileHandler}></input>
-                {uploading && <div>Uploading...</div>}
-              </li>
-              <li>
+                <br/>
                 <label htmlFor="brand">Brand</label>
                 <input
                   type="text"
@@ -200,26 +216,36 @@ function ProductsScreen(props) {
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
               </li>
-              <li>
-                <button type="submit" className="button primary">
+             
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <button type="submit" className="button primary create-product-button" >
                   {id ? 'Update' : 'Create'}
-                </button>
-              </li>
-              <li>
-                <button
+              </button>
+              <button
                   type="button"
                   onClick={() => setModalVisible(false)}
-                  className="button secondary"
+                  className="button secondary  create-product-button"
                 >
                   Back
-                </button>
-              </li>
+              </button>
             </ul>
-          </form>
-        </div>
-      )}
+                </div>
+                
+            </div>
+              
+            
+            </form>
+        </div> 
+            
 
+         
+        
+      )}
       <div className="product-list">
+        <h3>Products</h3>
         <table className="table">
           <thead>
             <tr>
@@ -232,6 +258,7 @@ function ProductsScreen(props) {
               <th>Action</th>
             </tr>
           </thead>
+          
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
@@ -256,8 +283,12 @@ function ProductsScreen(props) {
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
+      </div> 
+        </div>
   );
+  
 }
+
 export default ProductsScreen;
+
+    

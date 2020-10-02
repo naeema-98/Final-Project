@@ -11,11 +11,13 @@ router.put('/:id', isAuth, async (req, res) => {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
     user.password = req.body.password || user.password;
+    user.customerPoints= req.body.customerPoints || user.customerPoints;
     const updatedUser = await user.save();
     res.send({
       _id: updatedUser.id,
       name: updatedUser.name,
       email: updatedUser.email,
+      customerPoints: updatedUser.customerPoints,
       isAdmin: updatedUser.isAdmin,
       token: getToken(updatedUser),
     });
@@ -34,6 +36,7 @@ router.post('/signin', async (req, res) => {
       _id: signinUser.id,
       name: signinUser.name,
       email: signinUser.email,
+      customerPoints: signinUser.customerPoints,
       isAdmin: signinUser.isAdmin,
       token: getToken(signinUser),
     });

@@ -8,7 +8,8 @@ function ProfileScreen(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  //const [totalPoints, setPoints] = useState('');
+  //const [customerPoints, setcustomerPoints] = useState('');
+ const [totalPoints, setPoints] = useState('');
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -31,7 +32,9 @@ function ProfileScreen(props) {
       console.log(userInfo.name)
       setEmail(userInfo.email);
       setName(userInfo.name);
+      setPoints(userInfo.totalPoints);
       setPassword(userInfo.password);
+      
       //setPoints(totalPoints.totalPoints)
     }
     dispatch(listMyOrders());
@@ -40,6 +43,7 @@ function ProfileScreen(props) {
     };
   }, [userInfo])
 
+  
   return (
     <div>
       <hr className="line" />
@@ -71,20 +75,21 @@ function ProfileScreen(props) {
               </input>
             </li>
             
-            <li>
+            {/* <li>
               <label htmlFor="email">
                 Points
           </label>
-              <input value={email} type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
-              </input>
-            </li>
-            {/* <li>
+              <input value={itemsPoints} type="points" name="points" id="points" onChange={(e) => setPoints(itemsPoints+customerPoints)}>
+              </input> 
+            </li> */}
+           
+            <li>
               <label htmlFor="totalPoints">
                Points
           </label>
-              <input value={points} name="totalPoints" id="totalPoints" onChange={(e) => setEmail(e.target.value)}>
+              <input value={totalPoints} name="totalPoints" id="totalPoints" onChange={(e) => setEmail(e.target.value)}>
               </input>
-            </li> */}
+            </li> 
 
             <li>
               <label htmlFor="password">Password</label>
@@ -112,10 +117,11 @@ function ProfileScreen(props) {
                 <tr>
                   <th>ID</th>
                   <th>DATE</th>
-                  <th>TOTAL</th>
+                  <th>AMOUNT</th>
                   <th>PAID</th>
                   <th>POINTS</th>
-                  <th>ACTIONS</th>
+                   <th>TOTAL POINTS</th>
+                   <th>ACTIONS</th>
                 </tr>
               </thead>
               <tbody>
@@ -124,7 +130,10 @@ function ProfileScreen(props) {
                   <td>{order.createdAt}</td>
                   <td>{order.totalPrice}</td>
                   <td>{order.isPaid}</td>
-                  <td>{order.totalPoints}</td>
+                  <td>{order.itemsPoints}</td>
+                  <td> </td>
+                 
+
                   <td>
                     <Link to={"/order/" + order._id}>DETAILS</Link>
                   </td>

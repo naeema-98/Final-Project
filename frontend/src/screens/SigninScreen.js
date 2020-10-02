@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signin } from '../actions/userActions';
+import swal from 'sweetalert';
 
 function SigninScreen(props) {
 
@@ -16,7 +17,7 @@ function SigninScreen(props) {
       props.history.push(redirect);
     }
     return () => {
-      //
+      
     };
   }, [userInfo]);
 
@@ -32,7 +33,7 @@ function SigninScreen(props) {
     <form onSubmit={submitHandler} >
       <ul className="form-container details-action">
         <li>
-          <h2><strong>Sign-In</strong></h2>
+          <h2 style={{ fontSize: 25, align: "center"}}><strong>Sign-In</strong></h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}

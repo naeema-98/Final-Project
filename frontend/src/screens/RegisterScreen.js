@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { register } from '../actions/userActions';
+import swal from 'sweetalert';
 
 function RegisterScreen(props) {
 
@@ -33,7 +34,7 @@ function RegisterScreen(props) {
     <form onSubmit={submitHandler} >
       <ul className="form-container details-action">
         <li>
-          <h2><strong>Create Account</strong></h2>
+          <h2 style={{ fontSize: 25, align: "center"}}><strong>Create Account</strong></h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
@@ -64,7 +65,8 @@ function RegisterScreen(props) {
           </input>
         </li>
         <li>
-          <button type="submit" className="button primary">Register</button>
+          <button type="submit" id="btn" className="button primary">Register</button>
+          
         </li>
         <li>
           Already have an account?
@@ -75,6 +77,18 @@ function RegisterScreen(props) {
       </ul>
     </form>
   </div>
+  {/* <script>
+    let btn= document.getElementById("btn");
+    btn.addEventListener("click", function () {
+      swal({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success",
+        button: "Aww yiss!",
+      })
+    })
+  
+  </script> */}
   </div>)
 }
 export default RegisterScreen;

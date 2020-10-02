@@ -16,19 +16,24 @@ function OrdersScreen(props) {
     dispatch(listOrders());
     return () => {
       //
+      
     };
   }, [successDelete]);
 
   const deleteHandler = (order) => {
     dispatch(deleteOrder(order._id));
   }
+  
   return loading ? <div>Loading...</div> :
     <div className="content content-margined">
-
+      <br></br>
       <div className="order-header">
-        <h3>Orders</h3>
+        <h1><strong> Orders</strong> </h1>
       </div>
+      <br></br>
       <div className="order-list">
+
+        
 
         <table className="table">
           <thead>
@@ -38,10 +43,9 @@ function OrdersScreen(props) {
               <th>POINTS ADDED</th>
               <th>Total AMOUNT</th>
               <th>USER</th>
+              <th>customer points</th>
               <th>PAID</th>
-              <th>PAID AT</th>
-              <th>DELIVERED</th>
-              <th>DELIVERED AT</th>
+       
               <th>ACTIONS</th>
             </tr>
           </thead>
@@ -49,23 +53,28 @@ function OrdersScreen(props) {
             {orders.map(order => (<tr key={order._id}>
               <td>{order._id}</td>
               <td>{order.createdAt}</td>
-              <td>{order.totalPoints}</td>
+              <td>{order.itemsPoints}</td>
               <td>{order.totalPrice}</td>
               <td>{order.user.name}</td>
+              <td>{order.user.customerPoints+order.itemsPoints}</td>
               <td>{order.isPaid.toString()}</td>
-              <td>{order.paidAt}</td>
+              {/*<td>{order.paidAt}</td>
               <td>{order.isDelivered.toString()}</td>
-              <td>{order.deliveredAt}</td>
+              <td>{order.deliveredAt}</td> */}
               <td>
                 <Link to={"/order/" + order._id} className="button secondary" >Details</Link>
                 {' '}
                 <button type="button" onClick={() => deleteHandler(order)} className="button secondary">Delete</button>
               </td>
-            </tr>))}
+            </tr>))
+            }
           </tbody>
+          
         </table>
-
+       
       </div>
     </div>
+    
 }
+
 export default OrdersScreen;

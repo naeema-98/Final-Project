@@ -22,24 +22,33 @@ const orderItemSchema = new mongoose.Schema({
     required: true
   },
 });
-/* 
-const pointSchema = new mongoose.Schema({
-  sumPoints: { type: Number, default: 0 },
 
-});
- */
+const pointSchema = {
+  loyaltyPoints: { type: Number,default:0, required: true },
+
+};
+
+/* const customerSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  customerPoints: {type: Number, default: 0},
+  status: {type:Boolean , default: 1, required: true},
+  //isAdmin: { type: Boolean, required: true, default: false },
+  
+}); */
+
 const orderSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  //customer: [customerSchema],
   orderItems: [orderItemSchema],
-  shipping: shippingSchema,
   payment: paymentSchema,
   //sumPoints: pointSchema,
   itemsPrice: { type: Number },
   itemsPoints: { type: Number },
   taxPrice: { type: Number },
-  shippingPrice: { type: Number },
+  //shippingPrice: { type: Number },
   totalPrice: { type: Number },
   totalPoints: { type: Number },
+  loyaltyPoints: pointSchema,
   isPaid: { type: Boolean, default: false },
   paidAt: { type: Date },
   isDelivered: { type: Boolean, default: false },
@@ -49,4 +58,13 @@ const orderSchema = new mongoose.Schema({
 });
 
 const orderModel = mongoose.model("Order", orderSchema);
+/* 
+project.order.find().forEach(function (loyaltyPoints) {
+  var totalPoints = project.order.findOne({ id: _id });
+  if (doc2 != null) {
+      doc1.name = doc2.name;
+      db.coll01.save(doc1);
+  }
+  if()
+}); */
 export default orderModel;
