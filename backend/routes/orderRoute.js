@@ -22,9 +22,14 @@ const userPoints = async (user_id) => {
     for (let order of orders) {
       if (
         order.isPaid 
-        // && order.payment.paymentMethod != PAYMENT_METHOD_REDEEM
         ) {
-        points += order.totalPoints
+          //if you paid for the order, you get points
+          if(order.payment.paymentMethod != PAYMENT_METHOD_REDEEM)
+            points += order.totalPoints
+          //if you redeemed the order, you lose points
+          else
+            points -= order.totalPoints
+      }else{
       }
     }
     return points
