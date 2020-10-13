@@ -72,6 +72,8 @@ function PlaceOrderScreen(props) {
 
   useEffect(() => {
     if (success) {
+      
+
       props.history.push("/order/" + order._id);
     }
 

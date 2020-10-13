@@ -9,7 +9,7 @@ function ProfileScreen(props) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   //const [customerPoints, setcustomerPoints] = useState('');
- const [totalPoints, setPoints] = useState('');
+ const [totalPoints, setPoints] = useState(0);
   const dispatch = useDispatch();
 
   const userSignin = useSelector(state => state.userSignin);
@@ -26,13 +26,21 @@ function ProfileScreen(props) {
   const { loading, success, error } = userUpdate;
 
   const myOrderList = useSelector(state => state.myOrderList);
-  const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
+  const { loading: loadingOrders, orders, error: errorOrders, myPoints } = myOrderList;
+  
+
+  //refreshing the points on the front end.
+  useEffect( () => {
+    setPoints(myPoints)
+    console.log(myOrderList)
+  }, myPoints)
+
   useEffect(() => {
     if (userInfo) {
       console.log(userInfo.name)
       setEmail(userInfo.email);
       setName(userInfo.name);
-      setPoints(userInfo.totalPoints);
+      setPoints(myPoints);
       setPassword(userInfo.password);
       
       //setPoints(totalPoints.totalPoints)
@@ -87,7 +95,7 @@ function ProfileScreen(props) {
               <label htmlFor="totalPoints">
                Points
           </label>
-              <input value={totalPoints} name="totalPoints" id="totalPoints" onChange={(e) => setEmail(e.target.value)}>
+              <input value={totalPoints} name="totalPoints" id="totalPoints" onChange={(e) => setPoints(e.target.value)}>
               </input>
             </li> 
 
@@ -129,7 +137,7 @@ function ProfileScreen(props) {
                   <td>{order._id}</td>
                   <td>{order.createdAt}</td>
                   <td>{order.totalPrice}</td>
-                  <td>{order.isPaid}</td>
+                  <td>{order.isPaid ? order.payment.paymentMethod : "Not Paid!"}</td>
                   <td>{order.itemsPoints}</td>
                   <td> </td>
                  

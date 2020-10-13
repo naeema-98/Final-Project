@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import "D:/coursera/Final-Project/node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import './index.css';
 import App from './App';
 import store from './store';

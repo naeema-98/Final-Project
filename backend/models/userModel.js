@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   },
   password: { type: String, required: true },
   customerPoints: {type: Number, default: 0, required: true},
-  order: { type: mongoose.Schema.Types.ObjectId, ref: 'Order', required: true },
+  //we don't need this.
+  order: { type: mongoose.Schema.Types.ObjectId, ref: 'Order', required: false },
   isAdmin: { type: Boolean, required: true, default: false },
   
 });
