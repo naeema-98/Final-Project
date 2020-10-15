@@ -57,7 +57,7 @@ function OrdersScreen(props) {
               <td>{order.totalPrice}</td>
               <td>{order.user.name}</td>
               <td>{order.user.customerPoints+order.itemsPoints}</td>
-              <td>{order.isPaid.toString()}</td>
+              <td>{order.isPaid ? order.payment.paymentMethod : "Not Paid!"}</td>
               {/*<td>{order.paidAt}</td>
               <td>{order.isDelivered.toString()}</td>
               <td>{order.deliveredAt}</td> */}

@@ -7,6 +7,11 @@ const userSchema = new mongoose.Schema({
   },
   password: { type: String, required: true },
   customerPoints: {type: Number, default: 0, required: true},
+<<<<<<< HEAD
+=======
+  //we don't need this.
+  order: { type: mongoose.Schema.Types.ObjectId, ref: 'Order', required: false },
+>>>>>>> 2369bcc020a97a3df11146f96d9730f2804cdbb0
   isAdmin: { type: Boolean, required: true, default: false },
   status: {type: Boolean, requiredPaths:true, default: true} 
 });

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createOrder, detailsOrder, payOrder } from '../actions/orderActions';
+import { createOrder, detailsOrder, payOrder, redeemOrder } from '../actions/orderActions';
 //import PaypalButton from '../components/PaypalButton';
 function OrderScreen(props) {
 
@@ -25,6 +25,22 @@ function OrderScreen(props) {
   const orderDetails = useSelector(state => state.orderDetails);
   const { loading, order, error } = orderDetails;
 
+  const orderRedeem = useSelector(state => state.orderRedeem);
+  const { loading: loadingRedeem, success: successRedeem, error: errorRedeem } = orderRedeem;
+  const redeem = (e) => {
+    console.log(e)
+    dispatch(redeemOrder(order))
+  }
+  useEffect(() => {
+    if(successRedeem){
+      alert("Order redeemed!")
+      dispatch(detailsOrder(props.match.params.id));
+    }
+    if(errorRedeem){
+      alert(errorRedeem)
+    }
+  }, [loadingRedeem, successRedeem, errorRedeem])
+
   return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
 
     <div>
@@ -38,7 +54,7 @@ function OrderScreen(props) {
               Payment Method: {order.payment.paymentMethod}
             </div>
             <div>
-              {order.isPaid ? "Paid at " + order.paidAt : "Paid."}
+              {order.isPaid ? "Paid at " + order.paidAt : "Not Paid Yet."}
             </div>
           </div>
 
@@ -137,6 +153,24 @@ function OrderScreen(props) {
              <li>
               <div>Customer Points</div>
               <div>Rs.{order.itemsPoints}</div>
+            </li> 
+             <li>
+            {
+              (order.payment.paymentMethod == 'redeem' 
+              && !order.isPaid ) ? (
+                <>
+                <div>Let's redeem!</div>
+                <div>
+                    <button
+                    onClick={redeem}
+                    >Redeem!</button>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  </div>
+              )
+            }
             </li> 
           </ul>
 

@@ -3,7 +3,7 @@ import {
   ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_DETAILS_FAIL,
   ORDER_PAY_REQUEST, ORDER_PAY_SUCCESS, ORDER_PAY_FAIL,
   MY_ORDER_LIST_REQUEST, MY_ORDER_LIST_SUCCESS, MY_ORDER_LIST_FAIL,
-  ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS, ORDER_LIST_FAIL, ORDER_DELETE_REQUEST, ORDER_DELETE_SUCCESS, ORDER_DELETE_FAIL
+  ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS, ORDER_LIST_FAIL, ORDER_DELETE_REQUEST, ORDER_DELETE_SUCCESS, ORDER_DELETE_FAIL, ORDER_REDEEM_FAIL, ORDER_REDEEM_SUCCESS, ORDER_REDEEM_REQUEST
 } from "../constants/orderConstants";
 
 
@@ -41,13 +41,17 @@ function orderDetailsReducer(state = {
 
 
 function myOrderListReducer(state = {
-  orders: []
+  orders: [],
+  myPoints: 0 //points calculate on run-time
 }, action) {
   switch (action.type) {
     case MY_ORDER_LIST_REQUEST:
       return { loading: true };
     case MY_ORDER_LIST_SUCCESS:
-      return { loading: false, orders: action.payload };
+      //extracting the points from the payload
+      let _points = action.payload.splice(0, 1)[0]
+      let _orders = action.payload
+      return { loading: false, orders: _orders, myPoints: _points };
     case MY_ORDER_LIST_FAIL:
       return { loading: false, error: action.payload };
     default: return state;
@@ -86,6 +90,26 @@ function orderPayReducer(state = {
   }
 }
 
+
+//redeemeing reducer
+function orderRedeemReducer(state = {
+  order: {
+    loading: false,
+    error: null,
+    success: null
+  }
+}, action) {
+  switch (action.type) {
+    case ORDER_REDEEM_REQUEST:
+      return { loading: true };
+    case ORDER_REDEEM_SUCCESS:
+      return { loading: false, success: true };
+    case ORDER_REDEEM_FAIL:
+      return { loading: false, error: action.payload };
+    default: return state;
+  }
+}
+
 function orderDeleteReducer(state = {
   order: {
     orderItems: [],
@@ -105,5 +129,6 @@ function orderDeleteReducer(state = {
 }
 export {
   orderCreateReducer, orderDetailsReducer,
-  orderPayReducer, myOrderListReducer, orderListReducer, orderDeleteReducer
+  orderPayReducer, myOrderListReducer, orderListReducer, orderDeleteReducer,
+  orderRedeemReducer
 }

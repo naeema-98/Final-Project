@@ -73,7 +73,12 @@ function PlaceOrderScreen(props) {
 
   useEffect(() => {
     if (success) {
+<<<<<<< HEAD
       swal("Perfecto", "Your order is successfully placed! and your points are updated!", "success");
+=======
+      
+
+>>>>>>> 2369bcc020a97a3df11146f96d9730f2804cdbb0
       props.history.push("/order/" + order._id);
     }
 
