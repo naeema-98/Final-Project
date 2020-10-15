@@ -100,11 +100,7 @@ function App() {
             </li>
             <li>
               <Link to="/category/Watch" className="Links"><i class="fas fa-stopwatch"></i>&nbsp;&nbsp;&nbsp;Watches</Link>
-            </li>
-
-            <li>
-              <Link to="/category/Watch" className="Links"><i class="far fa-star"></i>&nbsp;&nbsp;&nbsp;Wishlist</Link>
-            </li>           
+            </li>         
           </ul>
         </aside>
 

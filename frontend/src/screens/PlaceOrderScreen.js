@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
+import swal from 'sweetalert';
 //import { update } from '../actions/userActions';
 //import userModel from '../../../backend/models/userModel';
 function PlaceOrderScreen(props) {
@@ -72,6 +73,7 @@ function PlaceOrderScreen(props) {
 
   useEffect(() => {
     if (success) {
+      swal("Perfecto", "Your order is successfully placed! and your points are updated!", "success");
       props.history.push("/order/" + order._id);
     }
 

@@ -87,7 +87,8 @@ function ProfileScreen(props) {
               <label htmlFor="totalPoints">
                Points
           </label>
-              <input value={totalPoints} name="totalPoints" id="totalPoints" onChange={(e) => setEmail(e.target.value)}>
+              {/* <input value={totalPoints} name="totalPoints" id="totalPoints" onChange={(e) => setEmail(e.target.value)}> */}
+              <input value={totalPoints} name="totalPoints" id="totalPoints" >
               </input>
             </li> 
 

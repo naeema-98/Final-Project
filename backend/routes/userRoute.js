@@ -1,8 +1,11 @@
 import express from 'express';
 import User from '../models/userModel';
 import { getToken, isAuth } from '../util';
+import swal from 'sweetalert';
 
 const router = express.Router();
+
+
 
 router.put('/:id', isAuth, async (req, res) => {
   const userId = req.params.id;
@@ -32,6 +35,7 @@ router.post('/signin', async (req, res) => {
     password: req.body.password,
   });
   if (signinUser) {
+    if(signinUser.status){
     res.send({
       _id: signinUser.id,
       name: signinUser.name,
@@ -41,8 +45,14 @@ router.post('/signin', async (req, res) => {
       token: getToken(signinUser),
     });
   } else {
-    res.status(401).send({ message: 'Invalid Email or Password.' });
+    // res.status(500).send({ message: 'You are an inactive user' });
+    res.status(500).send({ message: swal("Sorry", "you are inactive", "success") });
   }
+} 
+else {
+  res.status(401).send({ message: 'Invalid Email or Password.' });
+}
+
 });
 
 router.post('/register', async (req, res) => {
@@ -50,6 +60,7 @@ router.post('/register', async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
+
   });
   const newUser = await user.save();
   if (newUser) {
@@ -58,6 +69,7 @@ router.post('/register', async (req, res) => {
       name: newUser.name,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
+      status: newUser.status,
       token: getToken(newUser),
     });
   } else {
@@ -67,19 +79,12 @@ router.post('/register', async (req, res) => {
 
 router.get('/createadmin', async (req, res) => {
   try {
-    /*
-    const user = new User({
-      name: 'Basir',
-      email: 'admin@example.com',
-      password: '1234',
-      isAdmin: true,
-    });
-    */
     const user = new User({
       name: 'Naeema',
       email: 'naeema98qau@gmail.com',
       password: '12345',
       isAdmin: true,
+      status: true
     });
     const newUser = await user.save();
     res.send(newUser);

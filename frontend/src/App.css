@@ -403,7 +403,7 @@ a > .rating > span:last-child {
   padding: 2rem;
   
   list-style-type: none;
-  margin-right: 18rem;
+  margin-right: 20rem;
 }
 .form-c{
   border-style: dashed;
@@ -626,4 +626,49 @@ tbody > tr:nth-child(odd) {
   background: #ddd;
   text-decoration: none;
   color: #555;
+}
+
+/*css for create product */
+.note
+{
+    text-align: center;
+    height: 100rem;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+    width: 250rem;
+    height: 50rem;
+}
+.form-control{
+    border-radius:1.5rem;
+    height: 5rem;
+    font-size: small;
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 30%;
+    cursor: pointer;
+    background:  #028686;
+    color: #fff;
+    font-size: medium;
+   
+}
+
+.container{
+  width: 80rem;
+  
+}
+
+.product-container{
+  background-color: #def3f3;
 }

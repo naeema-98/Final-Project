@@ -17,6 +17,7 @@ function RegisterScreen(props) {
   const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
   useEffect(() => {
     if (userInfo) {
+      swal("Welcome", "You have registered successfully!", "success");
       props.history.push(redirect);
     }
     return () => {

@@ -14,11 +14,13 @@ function SigninScreen(props) {
   const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
   useEffect(() => {
     if (userInfo) {
+     
       props.history.push(redirect);
     }
     return () => {
       
     };
+    
   }, [userInfo]);
 
   const submitHandler = (e) => {
@@ -37,7 +39,8 @@ function SigninScreen(props) {
         </li>
         <li>
           {loading && <div>Loading...</div>}
-          {error && <div>{error}</div>}
+          {error && <div> {error}</div>}
+          {/* (swal("Sorry", "Invalid email or password", "success")) */}
         </li>
         <li>
           <label htmlFor="email">

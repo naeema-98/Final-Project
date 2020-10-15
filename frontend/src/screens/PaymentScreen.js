@@ -31,7 +31,7 @@ function PaymentScreen(props) {
                   type="radio"
                   name="paymentMethod"
                   id="paymentMethod"
-                  value="paypal"
+                  value="cash"
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 ></input>
                 <label for="paymentMethod">&nbsp; &nbsp;Cash</label>
@@ -45,7 +45,7 @@ function PaymentScreen(props) {
                   type="radio"
                   name="paymentMethod"
                   id="paymentMethod"
-                  value="paypal"
+                  value="points"
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 ></input>
                 <label for="paymentMethod">&nbsp; &nbsp;Points</label>

@@ -110,12 +110,150 @@ function ProductsScreen(props) {
         // <div className="form" style = {{
         //   marginLeft : "400px"
         // }}>
-          
-
-        <div className="container ">
-        <h1 className="create-product">Create Product</h1>
+          <div>
+         <h1 className="create-product">Create Product</h1>
           <form onSubmit={submitHandler}>
-            <div className="row form-c">
+            <div >
+          <div class="container ">
+            <div class="form">
+            {loadingSave && <div>Loading...</div>}
+            {errorSave && <div>{errorSave}</div>}
+                
+                <div class="form-content product-container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              <label htmlFor="name">Name</label>
+                                <input
+                                  type="text"
+                                  class="form-control" 
+                                  placeholder="Your Name *"
+                                  name="name"
+                                  value={name}
+                                  id="name"
+                                  onChange={(e) => setName(e.target.value)}
+                              />
+                            </div>
+                                {/* <input type="text" class="form-control" placeholder="Your Name *" value=""/> */}
+                            
+                            
+                            <div class="form-group">
+                              <label htmlFor="price">Price</label>
+                                <input
+                                  type="text"
+                                  class="form-control" 
+                                  placeholder="Price *"
+                                  name="price"
+                                  value={price}
+                                  id="price"
+                                  onChange={(e) => setPrice(e.target.value)}
+                                />
+                                {/* <input type="text" class="form-control" placeholder="Phone Number *" value=""/> */}
+                            </div>
+                            <div class="form-group">
+                            <label htmlFor="points">Points</label>
+                            <input
+                              type="text"
+                              class="form-control" 
+                              placeholder="Points *"
+                              name="price"
+                              value={points}
+                              id="points"
+                              //onChange={(e) => setPoints(e.target.value)}
+                              onChange={(e) => setPoints(0.10 * price)}
+                            />
+                                {/* <input type="text" class="form-control" placeholder="Phone Number *" value=""/> */}
+                            </div>
+                            <div class="form-group">
+                              <label htmlFor="image">Image</label>
+                                    <input
+                                      type="text"
+                                      class="form-control" 
+                                      placeholder="Image *"
+                                      name="image"
+                                      value={image}
+                                      id="image"
+                                      onChange={(e) => setImage(e.target.value)}
+                                    />
+                              <input type="file" class="form-control" onChange={uploadFileHandler}></input>
+                              {uploading && <div>Uploading...</div>}
+                                {/* <input type="text" class="form-control" placeholder="Phone Number *" value=""/> */}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <label htmlFor="brand">Brand</label>
+                              <input
+                                type="text"
+                                class="form-control" 
+                                placeholder="Brand *"
+                                name="brand"
+                                value={brand}
+                                id="brand"
+                                onChange={(e) => setBrand(e.target.value)}
+                              />
+                                {/* <input type="text" class="form-control" placeholder="Your Password *" value=""/> */}
+                            </div>
+                            <div class="form-group">
+                            <label htmlFor="countInStock">Count In Stock</label>
+                              <input
+                                type="text"
+                                class="form-control" 
+                                placeholder="CountInStock *"
+                                name="countInStock"
+                                value={countInStock}
+                                id="countInStock"
+                                onChange={(e) => setCountInStock(e.target.value)}
+                              />
+                                {/* <input type="text" class="form-control" placeholder="Confirm Password *" value=""/> */}
+                            </div>
+                            <div class="form-group">
+                            <label htmlFor="name">Category</label>
+                              <input
+                                type="text"
+                                class="form-control" 
+                                placeholder="Category *"
+                                name="category"
+                                value={category}
+                                id="category"
+                                onChange={(e) => setCategory(e.target.value)}
+                              />
+                                {/* <input type="text" class="form-control" placeholder="Phone Number *" value=""/> */}
+                            </div>
+                            <div class="form-group">
+                            <label htmlFor="description">Description</label>
+                              <textarea
+                                name="description"
+                                class="form-control" 
+                                placeholder="Description *"
+                                value={description}
+                                id="description"
+                                onChange={(e) => setDescription(e.target.value)}
+                              />
+                                {/* <input type="text" class="form-control" placeholder="Phone Number *" value=""/> */}
+                            </div>
+                        </div>
+
+                      
+                    </div>
+                                         
+                                 
+                    <button type="submit" class="btnSubmit" className="btnSubmit" style={{ marginLeft: "10rem"}} >
+                      {id ? 'Update' : 'Create'}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setModalVisible(false)}
+                      class="btnSubmit"
+                      style={{ marginRight: "5rem",marginLeft: "5rem" }}
+                     >
+                     Back
+                    </button>
+                </div>
+            </div>
+        </div>
+            {/* <div className="row form-c">
               
                 <div className="col-sm">
                   
@@ -232,13 +370,16 @@ function ProductsScreen(props) {
                   Back
               </button>
             </ul>
-                </div>
+                </div>*/}
                 
-            </div>
+            </div> 
               
+             
+            </form> 
             
-            </form>
         </div> 
+        
+        
             
 
          
